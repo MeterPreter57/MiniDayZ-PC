@@ -2,4 +2,4 @@
 
 progress saving  doesn't work.
 
-meterpreter57.github.io/minidayz_1.4.1/
+https://meterpreter57.github.io/minidayz_1.4.1/

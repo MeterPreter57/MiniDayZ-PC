@@ -1,5 +1,5 @@
-# MeterPreter57.github.io
+# Browser Mini DayZ
 
-progress saving  doesn't work.
+Progress saving doesn't work.
 
-https://meterpreter57.github.io/minidayz_1.4.1/
+[Play in Browser](https://meterpreter57.github.io/minidayz_1.4.1/)

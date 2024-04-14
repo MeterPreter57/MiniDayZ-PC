@@ -11930,7 +11930,6 @@ window["cr_setSuspended"] = function(s)
 	};
 	ExpValue.prototype.set_string = function (val)
 	{
-;
 		this.type = cr.exptype.String;
 		this.data = val;
 	};
@@ -17240,8 +17239,6 @@ cr.plugins_.Audio = function(runtime)
 			{
 				request = new XMLHttpRequest();
 				request.open("GET", src_, true);
-				if(!window.assets) window.assets=[];
-				window.assets.push(`https://minidayz.com/play/mp/${src_}`);
 				request.responseType = "arraybuffer";
 				request.onload = function () {
 					self.audioData = request.response;
@@ -22358,6 +22355,7 @@ cr.plugins_.Multiplayer = function(runtime)
 				self.runtime.trigger(cr.plugins_.Multiplayer.prototype.cnds.OnSignallingError, self);
 			};
 			this.mp["onsignallingclose"] = function () {
+				console.log("Trigger disconnect")
 				self.runtime.trigger(cr.plugins_.Multiplayer.prototype.cnds.OnSignallingDisconnected, self);
 				self.signallingUrl = "";
 			};
@@ -23071,6 +23069,7 @@ cr.plugins_.Multiplayer = function(runtime)
 	};
 	Acts.prototype.SignallingDisconnect = function ()
 	{
+		console.log("Disconnect trying",!isSupported || !this.mp["isConnected"](),isSupported,this.mp["isConnected"]())
 		if (!isSupported || !this.mp["isConnected"]())
 			return;
 		this.mp["signallingDisconnect"]();

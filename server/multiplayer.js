@@ -1,6 +1,8 @@
 import { router } from "./routers.js";
 import express from "express";
 import fs from "fs";
+import { socket } from "./app.js";
+import { WebSocket } from "ws";
 
 router.api.get("/auth",function(req,res,next){
 	res.send({login_request:"accesskey",client_id:"clientid"});
@@ -28,48 +30,47 @@ router.mp.post("/default-char",function(req,res,next){
 	res.json(req.body);
 });
 
-router.mp.get("/sp_ach",function(req,res,next){
-	const result=JSON.parse(fs.readFileSync("./db/ach.json"));
-	res.json(result);
-});
 
-router.mp.get("/sp_save",function(req,res,next){
-	const result=JSON.parse(fs.readFileSync("./db/save.json"));
-	res.json(result);
-});
+const rooms=[
+	{
+		name:"server_1",
+		peercount:1,
+		maxpeercount:12,
+		state:"available", // | locked | full,
+		data:["|2,server_1","2,Chernarus; Polygon","2,Survival","2,0","2,1.4.1|"].join("|"),
+	}
+];
+socket.on("connection",function(client){
+	console.log("client connected",client.protocol);
 
-router.mp.get("/sp_stats",function(req,res,next){
-	const result=JSON.parse(fs.readFileSync("./db/stats.json"));
-	res.json(result);
-});
+	client.send(JSON.stringify({"message":"welcome","protocolrev":1,"version":"1.6","name":"Construct Multiplayer Signalling Server","operator":"Scirra Ltd","motd":"Welcome to the unofficial Construct Multiplayer Signalling server!","clientid":"C7VX","ice_servers":["stun:locahost",{"urls":"turn:localhost","username":"scirra","credential":"construct"}]}));
+	client.sendData=function(type,object){
+		const result={
+			message:type,
+		}
+		for(const key in object){
+			result[key]=object[key];
+		}
+		client.send(JSON.stringify(result));
+	}
+	client.on("message",function(data,isBinary){
+		try{
+			data=JSON.parse(data);
+		}catch(err){
+			console.log(err);
+			return;
+		}
+		console.log(data);
+		client.emit(data.message,data);
+	});
 
-// Saving methods
-// Saving achievments
-router.mp.post("/sp_ach",function(req,res,next){
-	fs.writeFileSync("./db/ach.json",JSON.stringify(req.body));
-	res.json({saved_game_url:"1",send_achieves:"1"});
-});
+	client.on("list-rooms",function(){
+		client.sendData("room-list",{
+			list:rooms
+		});
+	});
 
-router.mp.post("/sp_save",function(req,res,next){
-	fs.writeFileSync("./db/save.json",JSON.stringify(req.body));
-	res.json({saved_game_url:"1",send_pos:"1"});
-});
-
-// Saving stats
-router.mp.post("/sp_stats",function(req,res,next){
-	fs.writeFileSync("./db/stats.json",JSON.stringify(req.body));
-	res.json({saved_game_url:"1",send_stats:"1"});
-});
-
-// Removing methods
-router.mp.delete("/sp_save",function(req,res,next){
-	console.log(req.body,req.query);
-});
-
-router.mp.delete("/sp_stats",function(req,res,next){
-	console.log(req.body,req.query);
-});
-
-// TODO: Websocket server list:
-//{"message":"list-rooms","game":"Bohemia Interactive - MINIDAYZ v3","instance":"minidayz","which":"all"}
-//{"message":"room-list","list":[]}
+	client.on("close",function(code,reason){
+		console.log(code,reason);
+	})
+})

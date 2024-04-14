@@ -2,6 +2,8 @@ import express, { Router } from "express";
 import { router } from "./routers.js";
 import path from "path";
 import { fileURLToPath } from "url";
+import http from "http";
+import { WebSocketServer } from "ws";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -24,6 +26,9 @@ app.use("/mp",router.mp);
 app.use("/api",router.api);
 
 
-app.listen(80,function(){
-	console.log("Server on port 80");
-})
+const server=http.createServer(app);
+server.listen(80,function(){
+	console.log(`App listening on port 80!`);
+});
+
+export const socket=new WebSocketServer({server:server});

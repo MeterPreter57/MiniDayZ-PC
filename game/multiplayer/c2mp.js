@@ -308,7 +308,7 @@
 			{
 				if (self.onsignallingerror)
 					self.onsignallingerror("server does not support '" + SIGNALLING_WEBSOCKET_PROTOCOL + "' protocol");
-				
+
 				self.sigws.close(1002, "'" + SIGNALLING_WEBSOCKET_PROTOCOL + "' protocol required");
 				self.sigws = null;
 				self.signalling_connected = false;
@@ -347,9 +347,9 @@
 	
 	C2Multiplayer.prototype.signallingDisconnect = function ()
 	{
+		console.log(new Error().stack);
 		if (!this.sigws || !this.signalling_connected)
 			return;
-		
 		this.sigws.close();
 		this.sigws = null;
 		this.signalling_connected = false;
@@ -358,7 +358,7 @@
 	C2Multiplayer.prototype.onSignallingMessage = function (m)
 	{
 		var o;
-		
+		console.log(m.data);
 		try {
 			o = JSON.parse(m.data);
 		}

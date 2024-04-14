@@ -7266,7 +7266,7 @@ function wc(f) {
 				if(c.indexOf("?")!=-1) router=c.split("?")[0];
 				if(!router.startsWith("/")) router=`/${router}`;
 				// console.log(method,router,query,body);
-				let q={status:404};
+				let q={readyState:4,status:404};
 				function response(object){
 					q={
 						readyState:4,
@@ -7275,7 +7275,7 @@ function wc(f) {
 					}
 				}
 				if(method=="GET"){
-					response(localStorage.getItem(router))
+					if(localStorage.getItem(router)!==null) response(localStorage.getItem(router));
 					if(router=="/"){
 						response({have_game:["SPROCKET2DAYZMINI001","SPROCKET2DAYZMINI001"]});
 					}
@@ -7288,7 +7288,6 @@ function wc(f) {
 					localStorage.setItem(router,JSON.stringify(Object.fromEntries(body)));
 				}
 				if(method=="DELETE"){
-					// del_stats
 					response({saved_game_url:"1",del_stats:true});
 					localStorage.removeItem(router);
 				}

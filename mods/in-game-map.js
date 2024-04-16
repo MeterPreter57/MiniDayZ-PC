@@ -38,13 +38,19 @@ div.addEventListener("click",function(event){
 });
 document.body.append(div);
 
+const maps={
+	"map_narva":"map_narva.jpg",
+	"map_minidayz":"map_minidayz.png",
+}
+
 export function install(){
 	const open=window.open;
 	window.open=function(url, target, windowFeatures){
 		if(target=="Map") {
 			const split=url.split("/");
+			const name=split[split.length-1].split(".")[0];
 			div.classList.remove("hide");
-			div.innerHTML=`<img src="../${split[split.length-1]}">`;
+			div.innerHTML=`<img src="../${maps[name]}">`;
 			cr_setSuspended(true);
 			return;
 		}

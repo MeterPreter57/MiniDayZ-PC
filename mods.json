@@ -1,0 +1,22 @@
+{
+	"mods":[
+		{
+			"name":"Response server simulator",
+			"description":"If you want to play singleplayer mode, this mod must be installed",
+			"script":"server-simulator",
+			"version":"1.0.0"
+		},
+		{
+			"name":"Quick in-game map",
+			"description":"To show in-game map click ESC and Map button",
+			"script":"in-game-map",
+			"version":"1.0.0"
+		},
+		{
+			"name":"Map link change",
+			"description":"Change original map image link to MeterPreter57 github image link",
+			"script":"map-link-change",
+			"version":"1.0.0"
+		}
+	]
+}

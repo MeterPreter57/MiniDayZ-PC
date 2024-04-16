@@ -7,6 +7,12 @@
 			"version":"1.0.0"
 		},
 		{
+			"name":"Save exporter & importer",
+			"description":"Required: \"Response server simulator\"",
+			"script":"save-export-import",
+			"version":"1.0.0"
+		},
+		{
 			"name":"Quick in-game map",
 			"description":"To show in-game map click ESC and Map button",
 			"script":"in-game-map",

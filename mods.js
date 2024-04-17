@@ -1,3 +1,4 @@
+import "./mods/toolbox.js";
 const {mods}=await (await fetch("../mods.json")).json();
 
 let install=localStorage.getItem("mods") || `["server-simulator"]`;

@@ -19,6 +19,20 @@ Click **Save and Exit** and wait until you will be back to the main menu.
 4. [x] Add working in-game map mod
 5. [ ] Creating helpers for better game control and easier creation of mods
 
+## Known issues:
+#### Achievements and stats are not updated after death 
+Reload the page
+#### Game saving/mods/other recently added features don't work
+1. Open the game  
+2. If you want to preserve your save  
+   2.1. Enable the `Save exporter & importer` mod  
+   2.2. Export your save  
+4. Open site information (top left corner near the url)
+5. Go to **Site settings**
+6. Click **Delete data**
+7. Reload the game and import your save
+
+
 ## Mods
 If you want to create your own mod, add javascript file to mods/ folder. Now you must to add install function which must be exported. 
 

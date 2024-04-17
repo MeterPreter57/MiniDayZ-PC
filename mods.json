@@ -4,7 +4,7 @@
 			"name":"Response server simulator",
 			"description":"If you want to play singleplayer mode, this mod must be enabled",
 			"script":"server-simulator",
-			"version":"1.0.0"
+			"version":"1.0.1"
 		},
 		{
 			"name":"Save exporter & importer",

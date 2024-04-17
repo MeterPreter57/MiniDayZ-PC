@@ -60,6 +60,10 @@ export function install(){
 				}
 			}
 			if(method=="POST"){
+				const split=body.get("data").split(",");
+				split[7]=parseFloat(split[7])+32;
+				split[8]=parseFloat(split[8])+32;
+				body.set("data",split.join(","));
 				response({saved_game_url:"1",send_pos:"1",send_achieves:"1",send_stats:"1"});
 				localStorage.setItem(router,JSON.stringify(Object.fromEntries(body)));
 			}

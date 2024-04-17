@@ -23,6 +23,18 @@
 			"description":"Change original map image link to MeterPreter57 github image link",
 			"script":"map-link-change",
 			"version":"1.0.0"
+		},
+		{
+			"name":"Canvas fix",
+			"description":"Change game size for better experience",
+			"script":"canvas-fix",
+			"version":"1.0.0-beta"
+		},
+		{
+			"name":"Clear cache",
+			"description":"Mainly used during development",
+			"script":"clear-cache",
+			"version":"1.0.0"
 		}
 	]
 }

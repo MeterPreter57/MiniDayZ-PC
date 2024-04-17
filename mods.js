@@ -171,7 +171,7 @@ async function start(){
 	}
 	localStorage.setItem("mods",JSON.stringify(install));
 	// Create new runtime using the c2canvas
-	cr_createRuntime("c2canvas");
+	window.c2runtime=cr_createRuntime("c2canvas");
 	
 	// Pause and resume on page becoming visible/invisible
 	function onVisibilityChanged() {

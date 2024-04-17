@@ -161,14 +161,15 @@ async function start(){
 			install.push(mod);
 		}
 	});
+	
+	div.remove();
+	style.remove();
 	for(const mod of mods){
 		if(!install.includes(mod.script)) continue;
 		const e=(await import(`../mods/${mod.script}.js`));
-		if(e.install) e.install();
+		if(e.install) await e.install();
 	}
 	localStorage.setItem("mods",JSON.stringify(install));
-	div.remove();
-	style.remove();
 	// Create new runtime using the c2canvas
 	cr_createRuntime("c2canvas");
 	

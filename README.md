@@ -16,7 +16,7 @@ Click **Save and Exit** and wait until you will be back to the main menu.
 2. [x] Add mods support without changing original files
 	- [x] Mod selection from list
 3. [x] Add server response simulator as mod
-4. [x] Add working in-game map mod (work in progress)
+4. [x] Add working in-game map mod
 5. [ ] Creating helpers for better game control and easier creation of mods
 
 ## Mods

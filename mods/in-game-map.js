@@ -38,12 +38,22 @@ div.addEventListener("click",function(event){
 });
 document.body.append(div);
 
+const cache=await caches.open("c2offline-http://localhost:8080/minidayz_1.4.1/-v1495461173");
+const offline=[
+	"../map_minidayz.png",
+	"../map_narva.jpg",
+];
+for(const src of offline){
+	const response=await fetch(src);
+	await cache.put(src,response);
+}
+
 const maps={
 	"map_narva":"map_narva.jpg",
 	"map_minidayz":"map_minidayz.png",
 }
 
-export function install(){
+export async function install(){
 	const open=window.open;
 	window.open=function(url, target, windowFeatures){
 		if(target=="Map") {

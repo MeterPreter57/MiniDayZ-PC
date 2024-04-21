@@ -1,7 +1,13 @@
+import "./mods/toolkit.js";
 const {mods}=await (await fetch("../mods.json")).json();
 
 let install=localStorage.getItem("mods") || `["server-simulator"]`;
 install=JSON.parse(install);
+
+const link=document.createElement("link");
+link.rel="shortcut icon";
+link.href="./icon-256.png";
+document.head.append(link);
 
 const style=document.createElement("style");
 style.innerHTML=/*css*/`
@@ -124,6 +130,19 @@ style.innerHTML=/*css*/`
 `;
 document.head.append(style);
 
+const cache=await caches.open("c2offline-http://localhost:8080/minidayz_1.4.1/-v1495461173");
+
+const offline=[
+	"../mods.js",
+	"../mods.json",
+	"../mods/toolkit.js",
+];
+for(const src of offline){
+	const response=await fetch(src);
+	await cache.put(src,response);
+}
+
+
 let list=``;
 for(const mod of mods){
 	let checked="";
@@ -136,6 +155,8 @@ for(const mod of mods){
 			<mark></mark>
 		</label>
 	`;
+	const response=await fetch(`../mods/${mod.script}.js`);
+	await cache.put(`../mods/${mod.script}.js`,response);
 }
 
 const div=document.createElement("div");

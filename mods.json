@@ -16,7 +16,7 @@
 			"name":"Quick in-game map",
 			"description":"To show in-game map click ESC and Map button",
 			"script":"in-game-map",
-			"version":"1.0.1"
+			"version":"1.0.2"
 		},
 		{
 			"name":"Map link change",

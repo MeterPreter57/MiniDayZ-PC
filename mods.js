@@ -130,7 +130,7 @@ style.innerHTML=/*css*/`
 `;
 document.head.append(style);
 
-const cache=await caches.open("c2offline-http://localhost:8080/minidayz_1.4.1/-v1495461173");
+const cache=await caches.open(`c2offline-${location.origin}/minidayz_1.4.1/-v1495461173`);
 
 const offline=[
 	"../mods.js",

@@ -1,5 +1,5 @@
 # PC Browser Mini DayZ
-[![Mini DayZ](./minidayz.png)](https://raw.githack.com/W84Soft/minidayz-tests/patch-1/minidayz_1.4.1/index.html)
+[![Mini DayZ](./minidayz.png)](https://raw.githack.com/MeterPreter57/MiniDayZ-PC/main/minidayz_1.4.1/index.html)
 
 ### Mods support added
 
@@ -10,7 +10,7 @@ Click **Save and Exit** and wait until you will be back to the main menu.
 
 
 
-# [Play in Browser](https://raw.githack.com/W84Soft/minidayz-tests/patch-1/minidayz_1.4.1/index.html)
+# [Play in Browser](https://raw.githack.com/MeterPreter57/MiniDayZ-PC/main/minidayz_1.4.1/index.html)
 
 ## Plans for the future:
 1. [x] Restore c2runtime.js and data.js to original source code

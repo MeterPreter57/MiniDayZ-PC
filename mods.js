@@ -187,7 +187,7 @@ async function start(){
 	style.remove();
 	for(const mod of mods){
 		if(!install.includes(mod.script)) continue;
-		const e=(await import(`../mods/${mod.script}/${mod.script}.js`));
+		const e=(await import(`../main/mods/${mod.script}/${mod.script}.js`));
 		if(e.install) await e.install();
 	}
 	localStorage.setItem("mods",JSON.stringify(install));

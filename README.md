@@ -25,6 +25,20 @@ Click **Save and Exit** and wait until you will be back to the main menu.
 6. [ ] Use toolkit.js to create an in-game panel that allows advanced game controls
 7. [ ] Creating helpers for better game control and easier creation of mods
 
+## Known issues:
+#### Achievements and stats are not updated after death 
+Reload the page
+#### Game saving/mods/other recently added features don't work
+1. Open the game  
+2. If you want to preserve your save  
+   2.1. Enable the `Save exporter & importer` mod  
+   2.2. Export your save  
+4. Open site information (top left corner near the url)
+5. Go to **Site settings**
+6. Click **Delete data**
+7. Reload the game and import your save
+
+
 ## Mods
 If you want to create your own mod, create javascript file in mods/ directory, for example: mods/my-mod/my-mod.js
 

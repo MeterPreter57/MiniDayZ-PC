@@ -53,6 +53,15 @@ const maps={
 	"map_minidayz":"map_minidayz.png",
 }
 
+window.addEventListener("keypress",function(event){
+	if(event.key.toLowerCase()=="m"){
+		const split=url.split("/");
+		const name=split[split.length-1].split(".")[0];
+		div.classList.remove("hide");
+		div.innerHTML=`<img src="../${maps[name]}">`;
+	}
+});
+
 export async function install(){
 	const open=window.open;
 	window.open=function(url, target, windowFeatures){

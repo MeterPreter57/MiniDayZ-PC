@@ -155,8 +155,8 @@ for(const mod of mods){
 			<mark></mark>
 		</label>
 	`;
-	const response=await fetch(`../mods/${mod.script}.js`);
-	await cache.put(`../mods/${mod.script}.js`,response);
+	const response=await fetch(`../mods/${mod.script}/${mod.script}.js`);
+	await cache.put(`../mods/${mod.script}/${mod.script}.js`,response);
 }
 
 const div=document.createElement("div");
@@ -183,11 +183,13 @@ async function start(){
 		}
 	});
 	
+	const branch=location.hostname=="localhost"?"":"main/";
+
 	div.remove();
 	style.remove();
 	for(const mod of mods){
 		if(!install.includes(mod.script)) continue;
-		const e=(await import(`../main/mods/${mod.script}.js`));
+		const e=(await import(`../${branch}mods/${mod.script}/${mod.script}.js`));
 		if(e.install) await e.install();
 	}
 	localStorage.setItem("mods",JSON.stringify(install));

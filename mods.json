@@ -26,7 +26,7 @@
 		},
 		{
 			"name":"Canvas fix",
-			"description":"Change game size for better experience",
+			"description":"Change game resolution for better experience",
 			"script":"canvas-fix",
 			"version":"1.0.0-beta"
 		},
@@ -35,6 +35,12 @@
 			"description":"Mainly used during development",
 			"script":"clear-cache",
 			"version":"1.0.0"
+		},
+		{
+			"name":"Save editor",
+			"description":"Edit your in-game position, map, difficulty level, equipment and items",
+			"script":"save-editor",
+			"version":"0.0.1-beta"
 		}
 	]
 }

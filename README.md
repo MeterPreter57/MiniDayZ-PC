@@ -10,6 +10,7 @@ Click **Save and Exit** and wait until you will be back to the main menu.
 
 # [Play in Browser](https://raw.githack.com/MeterPreter57/MiniDayZ-PC/main/minidayz_1.4.1/index.html)
 
+# [MiniDayZ MultiPlayer Version](https://github.com/MeterPreter57/minidayz-multiplayer)
 
 ## What's new?
 - Save editor 0.0.1-beta

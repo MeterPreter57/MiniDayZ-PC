@@ -68,7 +68,6 @@ style.innerHTML=/*css*/`
 }
 #mods .list label div{
 	width:90%;
-	white-space: nowrap;
 	text-overflow: ellipsis;
 	overflow: hidden;
 }
@@ -80,7 +79,6 @@ style.innerHTML=/*css*/`
 	font-size:10px;
 	color:#aaa;
 	display:block;
-	white-space: nowrap;
 	text-overflow: ellipsis;
 	overflow: hidden;
 }

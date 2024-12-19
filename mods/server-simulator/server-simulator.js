@@ -1,3 +1,5 @@
+import { game } from "../toolkit.js";
+
 export function install(){
 	window.XMLHttpRequest=class{
 		constructor(){
@@ -23,7 +25,7 @@ export function install(){
 			const that=this;
 			this.body=body;
 			this.response=this.responseText="";
-			if(this.method=="GET" && this.url.indexOf(".")>-1) return fetch(this.url).then(async function(res){
+			if(this.method=="GET" && this.url.indexOf(".")>-1 && this.url!="data.js") return fetch(this.url).then(async function(res){
 				if(that.responseType=="text") that.response=that.responseText=await res.text();
 				if(that.responseType=="json") that.response=that.responseText=await res.json();
 				if(that.responseType=="arraybuffer") that.response=that.responseText=await res.arrayBuffer();
@@ -58,6 +60,10 @@ export function install(){
 				if(router=="/api/auth"){
 					response({login_request:"accesskey",client_id:"clientid"});
 				}
+				if(this.url=="data.js"){
+					that.status=200;
+					that.responseText=game.data;
+				}
 			}
 			if(method=="POST"){
 				const split=body.get("data").split(",");
@@ -73,7 +79,8 @@ export function install(){
 			}
 			// All triggers from response
 			requestAnimationFrame(function(){
-				that.onreadystatechange();
+				if(that.onreadystatechange) that.onreadystatechange();
+				if(that.onload) that.onload();
 			})
 		}
 	}

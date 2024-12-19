@@ -4,7 +4,7 @@
 			"name":"Response server simulator",
 			"description":"If you want to play singleplayer mode, this mod must be enabled",
 			"script":"server-simulator",
-			"version":"1.0.1"
+			"version":"1.0.2"
 		},
 		{
 			"name":"Save exporter & importer",
@@ -40,7 +40,13 @@
 			"name":"Save editor",
 			"description":"Edit your in-game position, map, difficulty level, equipment and items",
 			"script":"save-editor",
-			"version":"0.0.1-beta"
+			"version":"0.0.2-beta"
+		},
+		{
+			"name":"🎮 Toolkit showcase",
+			"description":"This is an example of using the new tools for loading data.js modifications. <br>In this example, new logo is loaded and there is one game mode in which we get new bonus items at the start",
+			"script":"toolkit-showcase",
+			"version":"1.0.0"
 		}
 	]
 }

@@ -13,8 +13,10 @@ Click **Save and Exit** and wait until you will be back to the main menu.
 # [MiniDayZ MultiPlayer Version](https://github.com/MeterPreter57/minidayz-multiplayer)
 
 ## What's new?
-- Save editor 0.0.1-beta
-- Now the mods are in the catalogs
+- Updated "Response server simulator" now simulator allows you to inject data.js files
+- Toolkit update, now you can load your own data.js modifications using simple `game.loadData(src)` function
+- Toolkit `game.saveCache(__dirname,files)` method for storing files for offline play
+- Toolkit showcase modification
 
 ## Plans for the future:
 1. [x] Restore c2runtime.js and data.js to original source code
@@ -24,7 +26,7 @@ Click **Save and Exit** and wait until you will be back to the main menu.
 4. [x] Add working in-game map mod
 5. [ ] Update save editor UI & add more features 
 6. [ ] Use toolkit.js to create an in-game panel that allows advanced game controls
-7. [ ] Creating helpers for better game control and easier creation of mods
+7. [x] Creating helpers for better game control and easier creation of mods
 
 ## Known issues:
 #### Achievements and stats are not updated after death 
@@ -87,3 +89,37 @@ Now you need to modify mods.json, add your new mod to list:
 ### Testing mods
 Now you can start the server, e.g. via NodeJS http-server and run the game:
 ![Browser Mini DayZ mods selector](./example.png)
+
+
+### Loading custom data.js
+
+Below is an simple example of loading a custom data.js file:
+
+```js
+import { game } from "../toolkit.js";
+
+const __dirname=import.meta.url.split("/").splice(0,import.meta.url.split("/").length-1).join("/");
+
+const offlineFiles=[
+	"assets/image.png",
+	"assets/audio.ogg"
+];
+
+export async function install(){
+	await game.loadData(`${__dirname}/custom-data.js`);
+	await game.saveCache(__dirname,offlineFiles);
+}
+```
+
+### Files structure:
+```
+mods/
+└── before-dayz/
+    ├── before-dayz.js
+    ├── custom-data.js
+    └── assets/
+        ├── image.png
+        └── audio.ogg  
+```
+
+All data.js modifications are saved to the browser memory, so offline play is possible

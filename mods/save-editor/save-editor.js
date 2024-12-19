@@ -364,6 +364,7 @@ const items={
 		"167": "repeater",
 	},
 	pants:{
+		"300": "jeans",
 		"301": "workpants",
 		"302": "sportpants",
 		"303": "gorka pants",

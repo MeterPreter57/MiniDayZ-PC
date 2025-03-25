@@ -4,7 +4,7 @@
 ### Mods support added
 
 ### Progress saving works!
-Thanks [W84Soft](https://github.com/W84Soft) for that.  
+Thanks [Alpha Systems](https://github.com/AlphaSystemsPL) for that.  
 Click **Save and Exit** and wait until you will be back to the main menu.
 
 

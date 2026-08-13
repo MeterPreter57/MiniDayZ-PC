@@ -98,7 +98,7 @@ Below is an simple example of loading a custom data.js file:
 ```js
 import { game } from "../toolkit.js";
 
-const __dirname=import.meta.url.split("/").splice(0,import.meta.url.split("/").length-1).join("/");
+const __dirname=import.meta.url.split("/").slice(0,-1).join("/");
 
 const offlineFiles=[
 	"assets/image.png",
